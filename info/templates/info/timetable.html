@@ -1,0 +1,42 @@
+<title>MIET | Time Table</title>
+{% extends 'info/base.html' %} {% block content %}
+<div class="container">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="text-center">Timetable</h2>
+      </div>
+      <div id="no-more-tables">
+        <table
+          class="col-sm-12 table table-bordered table-striped table-condensed cf"
+        >
+          <thead class="cf">
+            <tr>
+              <th></th>
+              <th>10:45 - 11:45</th>
+              <th>11:45 - 12:45</th>
+              <th>12:45 - 1:45</th>
+              <th>Lunch</th>
+              <th>2:15 - 3:10</th>
+              <th>3:10 - 4:05</th>
+              <th>4:05 - 5:00</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for i in matrix %}
+            <tr>
+              {% for j in i %} {% if forloop.counter == 1 %}
+              <td><b> {{ j }} </b></td>
+              {% else %}
+              <td>{{ j }}</td>
+              {% endif %} {% endfor %}
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
