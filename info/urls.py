@@ -2,9 +2,19 @@ from django.urls import path, include
 from . import views
 from django.contrib import admin
 
+from info.views import home_view, contact_view, about_view
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    # Custom paths start here
+
+    path('', home_view, name='home'),
+    path('contact/', contact_view, name='contact'),
+    path('about/', about_view, name='about'),
+
+
+    # Custom paths end here
+
+    path('login/', views.index, name='index'),
     path('student/<slug:stud_id>/attendance/',
          views.attendance, name='attendance'),
     path('student/<slug:stud_id>/<slug:course_id>/attendance/',

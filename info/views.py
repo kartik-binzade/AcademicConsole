@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponseRedirect
+from requests import request
 from .models import Dept, Class, Student, Attendance, Course, Teacher, Assign, AttendanceTotal, time_slots, \
     DAYS_OF_WEEK, AssignTime, AttendanceClass, StudentCourse, Marks, MarksClass
 from django.urls import reverse
@@ -7,12 +8,27 @@ from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
 
+from django.http import HttpResponse
 
 User = get_user_model()
 
+
+# Custom views start here
+def home_view(request, *args, **kwargs):
+    return render(request, 'info/index.html', {})
+
+
+def contact_view(request, *args, **kwargs):
+    return render(request, 'info/contact.html', {})
+
+
+def about_view(request, *args, **kwargs):
+    return render(request, 'info/about.html', {})
+
+# Custom views end here
+
+
 # Create your views here.
-
-
 @login_required
 def index(request):
     if request.user.is_teacher:
